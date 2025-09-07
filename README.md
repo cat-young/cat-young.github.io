@@ -5,7 +5,7 @@
 ## Education
 I graduated from UNC with a BS in Biology and a minor in Chemistry. I am currently in the UNC CHIP Master's program and will be graduating in May 2026.
 
-<img width="3840" height="2160" alt="image" src="https://github.com/user-attachments/assets/144e4706-d51f-4207-879b-ba15cbdae8c4" />
+<img width="200" height="200" alt="image" src="https://github.com/user-attachments/assets/f6cadb26-118a-435c-b1c7-0996f53dab51" />
 
 
 ## Work
@@ -14,8 +14,8 @@ I am a clinical research coordinator for the Orthopedica Trauma Department at At
 <img width="300" height="168" alt="image" src="https://github.com/user-attachments/assets/fe9e295c-59a6-4db6-9bc1-a8b21ab9338f" />
 
 ## Hobbies
-*Reading
-*Pilates
-*Traveling (anywhere with a beach)
+⋅⋅⋅⋅* Reading
+⋅⋅⋅⋅* Pilates
+⋅⋅⋅⋅* Traveling (anywhere with a beach)
 
 # Links to Future Projects
