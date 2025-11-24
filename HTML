@@ -1,0 +1,30 @@
+<script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
+
+<button onclick="showAppts();">Search Patient Appointments</button>
+
+<hr />
+<table>
+  <thead>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Appointment Date</th>
+    <th>Appointment Specialty</th>
+    <th>Practitioner</th>
+    <th>Location</th>
+  </thead>
+  <tbody id="apptResults"></tbody>
+</table>
+
+<script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+ <script src="https://unpkg.com/leaflet-tooltip@0.8.0/dist/leaflet-tooltip.js"></script> 
+ <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+
+<div id="map"></div>
