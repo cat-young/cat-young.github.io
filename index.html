@@ -1,12 +1,18 @@
-<script src="mainscript.js" defer></script>
-
-<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Appointment Search</title>
+        <link rel="stylesheet" href="style.css">
 
 <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
 
 <button onclick="showAppts();">Search Patient Appointments</button>
 
-<hr />
+</head>
+    <script src="mainscript.js" defer></script>
+<body>
 <table>
   <thead>
     <th>First Name</th>
@@ -32,3 +38,5 @@
 
 <div id="map"></div>
 
+</body>
+</html>
