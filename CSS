@@ -1,0 +1,33 @@
+body {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+table th, table td {
+  border:1px solid black;
+  padding: 2px 5px;
+}
+
+#json {
+  width:100%;
+  height:200px;
+}
+
+#inputarea {
+  display:inline-block;
+  vertical-align:top;
+  width:45%;
+  margin:2%;
+}
+
+#table {
+  width:45%;
+  display:inline-block;  
+  vertical-align:top;
+}
+
+#table tr td, #table tr th {
+  padding:2px 5px;
+  border:1px solid black;
+}
+
+#map { height: 200px; }
