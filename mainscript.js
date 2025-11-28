@@ -128,3 +128,109 @@ async function geocodeAddress(addressString) {
   return null;
 }
 
+
+
+// ---------------------------------------------------------
+async function loadAppointmentLocations(n) {
+
+  const apptBundle = await client.request(`Appointment?patient=${n}`);
+
+  if (!apptBundle.entry) {
+    alert("No appointments found for this patient.");
+    return;
+  }
+
+  const locRefs = [];
+
+  apptBundle.entry.forEach(e => {
+    const appt = e.resource;
+
+    (appt.participant || []).forEach(p => {
+      if (p.actor?.reference?.startsWith("Location/")) {
+        locRefs.push(p.actor.reference);
+      }
+    });
+  });
+
+  if (locRefs.length === 0) {
+    alert("Appointments found but no Locations.");
+    return;
+  }
+
+  const finalLocations = [];
+
+  for (const ref of locRefs) {
+    let loc;
+
+    try {
+      loc = await client.request(ref);
+    } catch (err) {
+      console.warn("Failed to load location:", ref);
+      continue;
+    }
+
+    // A) Use direct coordinates if they exist
+    if (loc.position?.latitude && loc.position?.longitude) {
+      finalLocations.push({
+        hospital: loc.name || "Appointment Location",
+        latitude: loc.position.latitude,
+        longitude: loc.position.longitude,
+        sourceNote: "(from FHIR coordinates)"
+      });
+      continue;
+    }
+
+    // B) Try address geocoding
+    if (loc.address) {
+      const fullAddress = [
+        loc.address.line?.join(" "),
+        loc.address.city,
+        loc.address.state,
+        loc.address.postalCode,
+        loc.address.country
+      ].filter(Boolean).join(", ");
+
+      const geo = await geocodeAddress(fullAddress);
+
+      if (geo) {
+        finalLocations.push({
+          hospital: loc.name || "Appointment Location",
+          latitude: geo.lat,
+          longitude: geo.lon,
+          sourceNote: `(geocoded from address: ${fullAddress})`
+        });
+        continue;
+      }
+    }
+
+    // C) FALLBACK (no coords, no address)
+    finalLocations.push({
+      hospital: loc.name || "Sanford Health Hearing Center Dickinson",
+      latitude: 46.87874,       
+      longitude: -102.80961,     
+      sourceNote: "(fallback location — no coordinates or address)"
+    });
+  }
+
+  if (finalLocations.length === 0) {
+    alert("No mappable locations found.");
+    return;
+  }
+
+  addMarkers(finalLocations);
+}
+
+function showAppts() {
+  var n = prompt(
+    "Patient ID to search:",
+    "2e27c71e-30c8-4ceb-8c1c-5641e066c0a4",
+  );
+
+  client
+    .request("Patient/" + n)
+    .then(handlePatient)
+    .catch(console.error);
+
+  loadAppointmentLocations(n)
+  
+}
